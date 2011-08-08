@@ -11,11 +11,11 @@ class LinkHandler : public QApplication
 
 public:
     explicit LinkHandler(int, char*[]);
-    ~LinkHandler();
 
 public slots:
     void handleLink(QUrl link);
     void handleResourceNotFound();
+    void handleAboutToQuit();
 
 private:
     Crawler* m_crawler;

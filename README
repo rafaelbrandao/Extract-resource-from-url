@@ -1,1 +1,17 @@
-Small example of QtWebkit usage to extract resource loads information from a certain page.
+This is a very simple application using QtWebkit. It's purpose is to monitor what resources are loaded when you're loading a specific url, and then grab whatever it might be of your interest for you to handle. Here's how it's supposed to be used:
+
+USAGE: [--url URL] [--pattern PAT] [--command CMD] [--timeout SEC] 
+--url URL: Asks crawler to look for resources at URL. 
+--pattern PAT: If a resource has PAT as substring, then it'll be caught by this crawler. 
+--command CMD: As soon as it opens a url, it will call javascript CMD to possibly trigger some resource load (which you're interested) on that page. 
+--timeout SEC: Wait SEC seconds for a page load and then trigger the javascript command (if there's any). It would also wait SEC seconds after that trigger and then finish it. 
+
+Once you get this, you should run 'qmake', and then 'make' to generate code and executable.
+Then you can run it with './resource-from-url [pars]'.
+
+Here's a small example of usage (and the results):
+$ ./resource-from-url --url "http://qt.nokia.com" --pattern "jquery"
+FOUND: "http://qt.nokia.com/portal_javascripts/Qt Theme 2010/jquery-cachekey2590.js" 
+FOUND: "http://qt.nokia.com/portal_javascripts/Qt Theme 2010/jquery-integration-cachekey8188.js" 
+FOUND: "http://qt.nokia.com/portal_javascripts/Qt Theme 2010/jquery.prettyPhoto-cachekey2902.js" 
+FOUND: "http://qt.nokia.com/portal_javascripts/Qt Theme 2010/jquery.tools.min-cachekey7312.js"

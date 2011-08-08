@@ -2,3 +2,4 @@
 moc_*
 *.pro.user
 Makefile
+resource-from-url

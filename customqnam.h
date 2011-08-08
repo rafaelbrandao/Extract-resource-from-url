@@ -11,7 +11,8 @@ class CustomQNAM : public QNetworkAccessManager
 public:
     CustomQNAM(QObject* parent=0);
     ~CustomQNAM();
-    void setTargetResource(QString resource);
+    void setTargetPattern(QString pattern);
+    bool hasPattern();
 
 protected:
     virtual QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData);
@@ -20,7 +21,7 @@ signals:
     void detectedResource(QUrl);
 
 private:
-    QString m_resource;
+    QString m_pattern;
 };
 
 #endif // CUSTOMQNAM_H

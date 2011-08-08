@@ -3,6 +3,7 @@
 
 #include "customqnam.h"
 
+#include <QtCore/QTimer>
 #include <QtCore/QUrl>
 #include <QtNetwork/QNetworkReply>
 #include <QtWebKit/QWebPage>
@@ -20,10 +21,12 @@ public:
     void stop();
     void setOnLoadCommand(QString);
     void setUrlToLoad(QUrl);
-    void setTargetResource(QString);
+    void setTargetPattern(QString);
+    void setTimeout(int);
+    bool ready();
 
 public slots:
-    void onLoadFinished(bool);
+    void onTimeout();
     void onDetectedResource(QUrl);
 
 signals:
@@ -38,6 +41,8 @@ private:
     QString m_command;
     QUrl m_url;
     bool m_resourceFound;
+    QTimer m_timer;
+    int m_timeout;
 };
 
 #endif // CRAWLER_H

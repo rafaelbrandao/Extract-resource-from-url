@@ -3,9 +3,6 @@
 
 int main(int argc, char *argv[])
 {
-    LinkHandler* app = new LinkHandler(argc, argv);
-    app->exec();
-    delete app;
-
-    return 0;
+    LinkHandler app(argc, argv);
+    return app.exec();
 }
