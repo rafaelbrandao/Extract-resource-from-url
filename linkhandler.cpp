@@ -6,6 +6,7 @@ LinkHandler::LinkHandler(int argc, char* argv[])
     : QApplication(argc, argv)
     , m_crawler(new Crawler(this))
 {
+    setApplicationName("extract_resource_from_url");
     connect(this, SIGNAL(aboutToQuit()), this, SLOT(handleAboutToQuit()));
     connect(m_crawler, SIGNAL(detectedResource(QUrl)), SLOT(handleLink(QUrl)));
     connect(m_crawler, SIGNAL(couldNotDetectResource()), SLOT(handleResourceNotFound()));
