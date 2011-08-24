@@ -10,7 +10,8 @@ class LinkHandler : public QApplication
     Q_OBJECT
 
 public:
-    explicit LinkHandler(int, char*[]);
+    LinkHandler(int, char*[]);
+    int start();
 
 public slots:
     void handleLink(QUrl link);
